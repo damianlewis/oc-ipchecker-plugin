@@ -1,0 +1,9 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    ip_address:
+        label: IP address
+        span: left
+        comment: Specify an IP address to perform checks against. The wildcard character * can be used. e.g 192.168.1.*
