@@ -34,9 +34,9 @@ class Plugin extends PluginBase
     public function registerSettings(): array
     {
         return [
-            'ip_settings' => [
-                'label'       => 'IP Settings',
-                'description' => 'Manage the IP addresses.',
+            'ipAddress' => [
+                'label'       => 'IP Address',
+                'description' => 'Manage the internal IP address.',
                 'category'    => 'IP Checker',
                 'icon'        => 'icon-filter',
                 'class'       => Settings::class,
