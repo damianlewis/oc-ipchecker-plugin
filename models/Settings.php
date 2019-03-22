@@ -41,8 +41,10 @@ class Settings extends Model
      * @var array
      */
     public $rules = [
-        'ip_address' => [
-            'regex:/^\d{1,3}\.[0-9*]{1,3}\.[0-9*]{1,3}\.[0-9*]{1,3}$/',
+        'start_ip_address' => [
+            'required',
+            'ip',
         ],
+        'end_ip_address'   => 'ip',
     ];
 }

@@ -3,7 +3,11 @@
 # ===================================
 
 fields:
-    ip_address:
-        label: IP address
+    start_ip_address:
+        label: Start IP address
         span: left
-        comment: Specify an IP address to perform checks against. The wildcard character * can be used. e.g 192.168.1.*
+        comment: Specify an IP address for the start of the internal IP network range.
+    end_ip_address:
+        label: End IP address
+        span: right
+        comment: Specify an IP address for the end of the internal IP network range.

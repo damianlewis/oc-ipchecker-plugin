@@ -23,10 +23,8 @@ class Plugin extends PluginBase
     {
         return [
             'damianlewis.ipchecker.access_ip_settings' => [
-                'tab'               => 'IP Checker',
-                'label'             => 'Manage the IP addresses',
-                'validationPattern' => '^\d{1,3}\.[0-9*]{1,3}\.[0-9*]{1,3}\.[0-9*]{1,3}$',
-                'validationMessage' => 'Invalid format of the posts per page value',
+                'tab'   => 'IP Checker',
+                'label' => 'Manage the IP addresses',
             ],
         ];
     }
@@ -34,9 +32,9 @@ class Plugin extends PluginBase
     public function registerSettings(): array
     {
         return [
-            'ipAddress' => [
-                'label'       => 'IP Address',
-                'description' => 'Manage the internal IP address.',
+            'ipAddresses' => [
+                'label'       => 'IP Addresses',
+                'description' => 'Manage the internal IP addresses.',
                 'category'    => 'IP Checker',
                 'icon'        => 'icon-filter',
                 'class'       => Settings::class,
