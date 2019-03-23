@@ -2,6 +2,7 @@
 
 namespace DamianLewis\IpChecker\Traits;
 
+use DamianLewis\IpChecker\Classes\IpCheckerException;
 use DamianLewis\IpChecker\Models\Settings;
 
 trait IpCheckerServices
@@ -11,21 +12,23 @@ trait IpCheckerServices
      * Check if the client's IP address matches the start IP address.
      *
      * @return bool
+     * @throws IpCheckerException
      */
     public function isIpAddress(): bool
     {
+        $startIp  = Settings::get('start_ip_address');
+
+        if (!$startIp) {
+            throw new IpCheckerException('Invalid start IP address.');
+        }
+
         $clientIp = $this->getClientIpAddress();
-        $pattern  = Settings::get('start_ip_address');
 
         if (!$clientIp) {
             return false;
         }
 
-        if (!$pattern) {
-            return false;
-        }
-
-        if (preg_match('/^' . $pattern . '/', $clientIp)) {
+        if (preg_match('/^' . $startIp . '/', $clientIp)) {
             return true;
         }
 
@@ -36,18 +39,24 @@ trait IpCheckerServices
      * Check if the client's IP address is within the specified IP range.
      *
      * @return bool
+     * @throws IpCheckerException
      */
     public function isWithinRange(): bool
     {
-        $clientIp = ip2long($this->getClientIpAddress());
         $startIp  = ip2long(Settings::get('start_ip_address'));
         $endIp    = ip2long(Settings::get('end_ip_address'));
 
-        if (!$clientIp) {
-            return false;
+        if (!$startIp) {
+            throw new IpCheckerException('Invalid start IP addresses.');
         }
 
-        if (!$startIp || !$endIp) {
+        if (!$endIp) {
+            throw new IpCheckerException('Invalid end IP addresses.');
+        }
+
+        $clientIp = ip2long($this->getClientIpAddress());
+
+        if (!$clientIp) {
             return false;
         }
 
