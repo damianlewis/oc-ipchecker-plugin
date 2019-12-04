@@ -3,10 +3,10 @@
 # ===================================
 
 fields:
-    start_ip_address:
-        label: Start IP address
+    ip_address:
+        label: IP address
         span: left
-        comment: Specify an IP address for the start of the internal IP network range.
+        comment: Specify an IP address to check.
     end_ip_address:
         label: End IP address
         span: right
