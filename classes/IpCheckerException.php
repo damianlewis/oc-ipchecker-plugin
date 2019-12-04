@@ -2,7 +2,7 @@
 
 namespace DamianLewis\IpChecker\Classes;
 
-use October\Rain\Exception\ApplicationException;
+use ApplicationException;
 
 class IpCheckerException extends ApplicationException
 {
