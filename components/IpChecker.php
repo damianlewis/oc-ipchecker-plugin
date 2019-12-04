@@ -7,7 +7,6 @@ use DamianLewis\IpChecker\Traits\IpCheckerServices;
 
 class IpChecker extends ComponentBase
 {
-
     use IpCheckerServices;
 
     /**
@@ -20,7 +19,7 @@ class IpChecker extends ComponentBase
     public function componentDetails(): array
     {
         return [
-            'name'        => 'Ip Checker',
+            'name' => 'IP Checker',
             'description' => 'Checks the client IP address.',
         ];
     }

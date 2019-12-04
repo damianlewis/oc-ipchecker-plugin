@@ -7,19 +7,18 @@ use DamianLewis\IpChecker\Models\Settings;
 
 trait IpCheckerServices
 {
-
     /**
-     * Check if the client's IP address matches the start IP address.
+     * Check if the client's IP address matches the configured IP address.
      *
      * @return bool
      * @throws IpCheckerException
      */
     public function isIpAddress(): bool
     {
-        $startIp  = Settings::get('start_ip_address');
+        $ip = Settings::get('ip_address');
 
-        if (!$startIp) {
-            throw new IpCheckerException('Invalid start IP address.');
+        if (!$ip) {
+            throw new IpCheckerException('Invalid IP address.');
         }
 
         $clientIp = $this->getClientIpAddress();
@@ -28,7 +27,7 @@ trait IpCheckerServices
             return false;
         }
 
-        if (preg_match('/^' . $startIp . '/', $clientIp)) {
+        if (preg_match('/^'.$ip.'/', $clientIp)) {
             return true;
         }
 
@@ -43,8 +42,8 @@ trait IpCheckerServices
      */
     public function isWithinRange(): bool
     {
-        $startIp  = ip2long(Settings::get('start_ip_address'));
-        $endIp    = ip2long(Settings::get('end_ip_address'));
+        $startIp = ip2long(Settings::get('ip_address'));
+        $endIp = ip2long(Settings::get('end_ip_address'));
 
         if (!$startIp) {
             throw new IpCheckerException('Invalid start IP addresses.');
